@@ -106,6 +106,7 @@ Klattsyn Interactive
         
             if re.search('\s*_varied_params_\s*', d, re.MULTILINE) != None:
                 (params, comments) = klsyn.klpfile.read(pfile)
+                ui = params['ui']
 
             elif (re.match('^sec*.',d) != None):
                 start = 0
@@ -121,9 +122,11 @@ Klattsyn Interactive
 
                 (params,comments) = ifc2klp(pfile,start,end)
                 fname = fname + "_klp"
+                ui = params['ui']
             else:
                 print("\tthe file format of {} was not recognized.".format(pfile))
                 continue
+
             print("\tfinished reading the file {}".format(pfile))
         
         if cmd == 'v':
